@@ -1,0 +1,9 @@
+JarIndex-Version: 1.0
+
+lwjgl-opengl-natives-linux.jar
+META-INF
+META-INF/versions
+META-INF/versions/9
+liblwjgl_opengl.so
+liblwjgl_opengl.so.sha1
+

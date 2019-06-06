@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-8-openjdk-amd64">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="dependancies/lwjgl/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VoyceEngine/dependancies/lwjgl"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="dependancies/lwjgl-assimp/lwjgl-assimp.jar"/>
+	<classpathentry kind="lib" path="dependancies/lwjgl-glfw/lwjgl-glfw.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VoyceEngine/dependancies/lwjgl-glfw"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="dependancies/lwjgl-jawt/lwjgl-jawt.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VoyceEngine/dependancies/lwjgl-jawt"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="dependancies/lwjgl-opengl/lwjgl-opengl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VoyceEngine/dependancies/lwjgl-opengl"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="dependancies/lwjgl-stb/lwjgl-stb.jar" sourcepath="dependancies/lwjgl-stb/lwjgl-stb-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/VoyceEngine/dependancies/lwjgl-stb/lwjgl-stb-javadoc.jar!/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VoyceEngine/dependancies/lwjgl-stb"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

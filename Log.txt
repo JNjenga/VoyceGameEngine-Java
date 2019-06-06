@@ -1,0 +1,37 @@
+PROJECT : VOYCE GAME ENGINE
+
+DATE : 6TH MAY 2019
+
+
+The desiered end result of this project is a game not an Engine. Though it will have the functionalities of an engine but the main idea is games !
+It will be more of a framework.. My framework for creating games. Eventually it may branch to an engine.
+
+How I plan to do it?
+
+I don't have a clear plan but I want to be implementing one thing per week. Like this week I have handled the display.
+The proccess will be broken down that way. It will building a house. 
+The dummy game that I will begin by mimmicking is Hill climber for 2d.
+
+I hope that this will be my ICS2 project.
+
+
+WEEK 1:
+	
+	GOAL : ABSTRACTION AND DISPLAY
+
+	Set up the project and window
+	
+	Layers of abstraction
+		Window - This is the window of the application. When creating the game title, width and height are passed to create the window. The idea is to absrtact it so as to support any window framework
+		Chasis - This is a package that holds the linkers/the controllers of the whole application where everithing happens upon.
+		
+		ResourceManager - Crucial part of the project, Holds the information of all resources of the project,. The goal is to reduce duplicatoin of obbjects. So far it manages a timmer and a window object.
+		
+		BugTracker - This is used to display out information of EVENTS, SUCCESSES and ERRORS.
+		
+		Structure - Holds the structure of the game i.e onUpdate, onStart and render that should occur in the main game
+
+
+WEEK 2 :
+	
+	GOAL : BARE MINIMUM FOR MESHES AND SHADERS i.e RENDERING

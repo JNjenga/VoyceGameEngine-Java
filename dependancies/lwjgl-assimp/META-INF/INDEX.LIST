@@ -1,0 +1,13 @@
+JarIndex-Version: 1.0
+
+lwjgl-assimp-natives-windows.jar
+META-INF
+META-INF/versions
+META-INF/versions/9
+assimp.dll
+assimp.dll.git
+assimp.dll.sha1
+assimp32.dll
+assimp32.dll.git
+assimp32.dll.sha1
+
