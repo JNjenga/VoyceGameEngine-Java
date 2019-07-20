@@ -1,10 +1,7 @@
-/utility/
-/window/
-/chasis/
-/model/
-/render/
-/res/
-/shader/
-/tests/
+/events/
 /testunits/
-/texture/
+/chasis/
+/window/
+/tests/
+/model/
+/utility/

@@ -59,7 +59,7 @@ public class Texture {
     
     public Texture(String path) {
         id = glGenTextures();
-        loadTexture("/res/textures/"+path);
+        loadTexture(path);
     }
 
     /**

@@ -2,10 +2,8 @@ package testunits;
 
 import chasis.*;
 import model.*;
-import texture.*;
-import utility.*;
 
-public class TheTriangle implements Structure{
+public class TheTriangle implements Game{
 	Model model ;
 	@Override
 	public void onStart() {
@@ -36,7 +34,11 @@ public class TheTriangle implements Structure{
 	public void render() {
  		
 		model.draw(false);
-		BugTracker.MEMORYUSAGE();
+ 	}
+
+	@Override
+	public void onClose() {
+ 		
 	}
 
 	 

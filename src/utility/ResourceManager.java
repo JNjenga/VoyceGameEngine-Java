@@ -11,21 +11,25 @@ public class ResourceManager {
 	
 	private static ResourceManager INSTANCE;
 	
+	final String shaderPath = "/res/shaders/";
+	final String texturePath = "/res/textures/";
+
 	private Window window;
 	
 	private Timmer timmer;
 	
 	HashMap<String, Shader> shaders;
-	
-	final String shaderPath = "/res/shaders/";
-
-	private HashMap<String , Model> models;
+	HashMap<String, Texture> textures;
+	HashMap<String , Model> models;
+ 	
 	public ResourceManager() {
 		window = new Window();
 		timmer = new Timmer();
 		shaders = new HashMap<>();
 		models = new HashMap<>();
- 	}
+		textures = new HashMap<>();
+		
+  	}
 	
 	public static synchronized ResourceManager getInstance() {
 		if(INSTANCE == null) {
@@ -56,8 +60,11 @@ public class ResourceManager {
 		return shaders.get(shaderName);
 	}
 	
-	public Texture getTexture() {
-		
-		return null;
+	public Texture getTexture(String resourceName) {
+		if (textures.get(resourceName) == null) {
+			textures.put(resourceName,new Texture(texturePath+resourceName));
+			
+		}
+		return textures.get(resourceName);
 	}
 }

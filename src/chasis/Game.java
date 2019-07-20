@@ -1,6 +1,6 @@
 package chasis;
 
-public interface Structure {
+public interface Game {
 	boolean running = false;
 	
 	void onStart();
@@ -8,6 +8,7 @@ public interface Structure {
 	void onUpdate();
 	
 	void render();
-
+	
+	void onClose();
 }
 

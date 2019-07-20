@@ -11,7 +11,7 @@ import utility.*;
 
 public class Window {
 	//The window handle
-	private static long window;
+	public static long window;
 	
 	//Size specifire of the window
 	private int WIDTH,HEIGHT;
@@ -88,17 +88,9 @@ public class Window {
 		GLFW.glfwSwapBuffers(window);
 		GLFW.glfwPollEvents();
 		
-		GLFW.glfwSetFramebufferSizeCallback(window,new GLFWFramebufferSizeCallbackI() {
-					
-					@Override
-					public void invoke(long window, int width, int height) {
-						GL11.glViewport(0, 0, width, height);				
-					}
-				 
-				}
-				);
 		if(GLFW.glfwWindowShouldClose(window)) {
 			running = false;
+			
 			BugTracker.LOG("EVENT", "WINDOW :: Closing window...");
 			 
 			GLFW.glfwTerminate();
@@ -114,5 +106,9 @@ public class Window {
 
 	public void setRunning(boolean running) {
 		this.running = running;
+	}
+
+	public long getWindow() {
+ 		return window;
 	}
 }

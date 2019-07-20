@@ -2,9 +2,8 @@ package testunits;
 
 import chasis.*;
 import model.*;
-import utility.*;
 
-public class WindowTest implements Structure{
+public class WindowTest implements Game{
 	Model model ;
 	@Override
 	public void onStart() {
@@ -18,6 +17,11 @@ public class WindowTest implements Structure{
 	public void render() {
  		
 
+	}
+
+	@Override
+	public void onClose() {
+ 		
 	}
 
 	 

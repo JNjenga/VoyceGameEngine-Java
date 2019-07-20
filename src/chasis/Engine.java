@@ -1,12 +1,14 @@
 package chasis;
 
+import org.lwjgl.glfw.*;
+
 import render.*;
 import utility.*;
 import window.*;
 
 public class Engine extends Renderer{
 
-	private Structure game;
+	private Game game;
 	
 	private boolean running = false;
 	
@@ -14,22 +16,24 @@ public class Engine extends Renderer{
 	
 	private Timmer timmer;
 	
- 	
-	
-	public Engine(String title, int width,int height,Structure game) {
-		
-		this.game = game;
+ 	public Engine(String title, int width,int height,Game game) {
+ 		this.game = game;
+ 		
 		window = ResourceManager.getInstance().getWindow();
 		timmer = ResourceManager.getInstance().getTimmer();
 
 		running = true;
+		
 		BugTracker.LOG("EVENT", "GAME :: Starting up game");
+		
+		
 		ResourceManager.getInstance().getWindow().createWindow(title,width,height);
+	}
+	public void start() {
 		
 		game.onStart();
 		loop();
 	}
-	
 	
 	public void loop() {
 		
@@ -45,8 +49,16 @@ public class Engine extends Renderer{
  			//Render
  			clear();
  			game.render();
+ 			game.onUpdate();
 		}
+ 		
+ 		terminate();
+ 		game.onClose();
 
+	}
+	
+	public static  void terminate() {
+ 		GLFW.glfwSetWindowShouldClose(Window.window, true);
 	}
 	 
 }

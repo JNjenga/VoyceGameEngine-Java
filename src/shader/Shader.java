@@ -72,5 +72,9 @@ public class Shader {
 	public void enableShader() {
 		GL20.glUseProgram(programID);
 	}
+	
+	public void disableShader() {
+		GL20.glUseProgram(0);
+	}
 
 }
