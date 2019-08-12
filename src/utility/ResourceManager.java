@@ -60,6 +60,9 @@ public class ResourceManager {
 		return shaders.get(shaderName);
 	}
 	
+	public void updateShader(String shaderName ,Shader shader) {
+		shaders.replace(shaderName, shader);
+	}
 	public Texture getTexture(String resourceName) {
 		if (textures.get(resourceName) == null) {
 			textures.put(resourceName,new Texture(texturePath+resourceName));

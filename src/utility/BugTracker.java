@@ -5,6 +5,7 @@ public class BugTracker {
 	public static void LOG(String eventType,String log) {
 		if (eventType == "ERROR") {
 			System.err.println(eventType+" :: "+log);
+			//System.exit(1);
 			return;
 		}
 		System.out.println(eventType+" :: "+log);

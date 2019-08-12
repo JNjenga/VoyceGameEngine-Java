@@ -1,7 +1,6 @@
-/events/
+/nuklear/
+/base/
 /testunits/
 /chasis/
-/window/
-/tests/
-/model/
-/utility/
+/res/
+/camera/

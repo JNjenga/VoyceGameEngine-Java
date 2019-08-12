@@ -53,7 +53,12 @@ public class VAO {
 		
 		
 	}
+
 	
+	//Nuklear
+	public VAO() {
+		vaoID = GL30.glGenVertexArrays();
+	}
 	public void draw() {
 		GL11.glDrawElements(GL11.GL_TRIANGLES, vertexCount,GL11.GL_UNSIGNED_INT,0);
 

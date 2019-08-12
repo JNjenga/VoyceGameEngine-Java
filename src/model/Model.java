@@ -2,6 +2,7 @@ package model;
 
 import org.lwjgl.opengl.*;
 
+import camera.*;
 import texture.*;
 import utility.*;
 
@@ -20,7 +21,22 @@ public class Model {
 	}
 	
 	
+	public void draw(boolean polygonMode,ThirdPersonCamera camera) {
+		
+		ResourceManager.getInstance().getTexture(textureName).enable();
+		ResourceManager.getInstance().getShader(shaderName).enableShader();
+		ResourceManager.getInstance().getShader(shaderName).updateViewMatrix(camera.getViewMatrix(),camera.projection);
+ 		vao.enableVao();
+		vao.draw();
+		vao.disableVao();
+		
+		ResourceManager.getInstance().getShader(shaderName).disableShader();
+		ResourceManager.getInstance().getTexture(textureName).disable();
+		
+	}
+
 	public void draw(boolean polygonMode) {
+		
 		ResourceManager.getInstance().getTexture(textureName).enable();
 		ResourceManager.getInstance().getShader(shaderName).enableShader();
 		

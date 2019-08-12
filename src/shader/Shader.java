@@ -1,7 +1,11 @@
 package shader;
 
+import java.util.*;
+
 import javax.swing.*;
 
+import org.joml.*;
+import org.joml.Math;
 import org.lwjgl.opengl.*;
 
 import utility.*;
@@ -10,9 +14,10 @@ public class Shader {
 	
 	private int programID;
 	
-	
+	private HashMap<String ,Integer> uniforms;
 	
 	public Shader(String shaderPath) {
+		uniforms = new HashMap<String, Integer>();
 		programID = load(shaderPath);
 	}
 	private int load(String path) {
@@ -76,5 +81,41 @@ public class Shader {
 	public void disableShader() {
 		GL20.glUseProgram(0);
 	}
+	
+	public int getUniformLocation(String name) {
+		if (!uniforms.containsKey(name)) {
+			int uniformLocation =GL20.glGetUniformLocation(programID, name);;
+			
+			if (uniformLocation<0) {
+				BugTracker.LOG("ERROR", "The uniform '"+name+"' was not found !");
+				return 0;
+			}
+			uniforms.put(name, uniformLocation);
+		}
+		
+ 		return uniforms.get(name);
+	}
+	
+	public int getAttribLocation(String name) {
+		
+		return GL20.glGetAttribLocation(programID, name);
+	}
+	
+	float [] d = new float[16];
+	
+	public void setUnifrom(String name,Matrix4f mat) {
+		
+		GL20.glUniformMatrix4fv(getUniformLocation(name), false, mat.get(d));
+	}
+	Matrix4f model = new Matrix4f().translate(0, 0, -10f);
+	Matrix4f p = new Matrix4f().perspective((float)Math.toRadians(45), 1080/780, (float) 0.1f, 100);
+	public void updateViewMatrix(Matrix4f viewMatrix,Matrix4f p) {
+		 
+		model.rotate(0.04f, 1,0,0);
+		setUnifrom("m_mat", model);
+		 setUnifrom("p_mat", p);
+		 setUnifrom("v_mat",viewMatrix);
+		
+ 	}
 
 }

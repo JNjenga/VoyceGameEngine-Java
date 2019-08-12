@@ -19,6 +19,8 @@ public class Test {
 			System.out.println("\t1. Window test");
 			System.out.println("\t2. The triangle");
 			System.out.println("\t3. Texture Test");
+			System.out.println("\t4. Nuklear Test");
+			System.out.println("\t5. Camera Test");
 			System.out.println("\tID: ");
 			Engine e = null;
 			switch ( scanner.nextInt()) {
@@ -34,6 +36,16 @@ public class Test {
 				break;
 			case 3:
 				e = new Engine("Texture Test", 1080, 720,  new TextureTest());
+				e.start();
+				e = null;
+				break;
+			case 4:
+				e = new Engine("Nuklear Test", 1080, 720,  new NKtest());
+				e.start();
+				e = null;
+				break;
+			case 5:
+				e = new Engine("Camera Test", 1080, 720,  new CameraTest());
 				e.start();
 				e = null;
 				break;

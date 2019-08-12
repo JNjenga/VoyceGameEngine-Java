@@ -2,6 +2,7 @@ package chasis;
 
 import org.lwjgl.glfw.*;
 
+import nuklear.*;
 import render.*;
 import utility.*;
 import window.*;
@@ -10,11 +11,12 @@ public class Engine extends Renderer{
 
 	private Game game;
 	
-	private boolean running = false;
+	public static boolean running = false;
 	
 	private Window window ;
 	
 	private Timmer timmer;
+	
 	
  	public Engine(String title, int width,int height,Game game) {
  		this.game = game;
@@ -28,6 +30,8 @@ public class Engine extends Renderer{
 		
 		
 		ResourceManager.getInstance().getWindow().createWindow(title,width,height);
+		
+		 
 	}
 	public void start() {
 		
@@ -49,6 +53,8 @@ public class Engine extends Renderer{
  			//Render
  			clear();
  			game.render();
+ 			
+ 			//Update game
  			game.onUpdate();
 		}
  		
