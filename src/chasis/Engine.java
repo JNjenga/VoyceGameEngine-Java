@@ -47,16 +47,13 @@ public class Engine extends Renderer{
 		timmer.init();
 		
 		eventManager.init();
-		
  		while(window.isRunning() && running) {
- 			
- 			//Update window
+  			//Update window
  			ResourceManager.getInstance().getWindow().updateWindow();
  			
- 			
- 			//Render
  			clear();
- 			game.render();
+ 			//Render
+  			game.render();
  			
  			//Update game
  			game.onUpdate();

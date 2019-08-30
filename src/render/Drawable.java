@@ -34,11 +34,10 @@ public abstract class Drawable {
 			
 			
 			if (vao.isTextured()) {
-				//ResourceManager.getInstance().getTexture(textureName).enable();
+				ResourceManager.getInstance().getTexture(textureName).enable();
 			}
-			Shader shader = ResourceManager.getInstance().getShader(shaderName);
-			shader.enableShader();
-			updateUniforms();
+			 ResourceManager.getInstance().getShader(shaderName).enableShader();
+ 			updateUniforms();
 			
 			if (polygonMode) {
 				
