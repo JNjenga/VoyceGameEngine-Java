@@ -18,6 +18,7 @@ public class ResourceManager {
 	
 	private Timmer timmer;
 	
+ 	
 	HashMap<String, Shader> shaders;
 	HashMap<String, Texture> textures;
 	HashMap<String , Model> models;
@@ -28,8 +29,7 @@ public class ResourceManager {
 		shaders = new HashMap<>();
 		models = new HashMap<>();
 		textures = new HashMap<>();
-		
-  	}
+   	}
 	
 	public static synchronized ResourceManager getInstance() {
 		if(INSTANCE == null) {
@@ -70,4 +70,6 @@ public class ResourceManager {
 		}
 		return textures.get(resourceName);
 	}
+
+	 
 }

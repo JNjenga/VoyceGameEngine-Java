@@ -14,4 +14,16 @@ public class Renderer {
 
 	}
 
+	public static void enablePolygonMode() {
+		// Turn on wireframe mode
+		GL11.glPolygonMode(GL11.GL_FRONT, GL11.GL_LINE);
+		GL11.glPolygonMode(GL11.GL_BACK, GL11.GL_LINE);
+		
+	}
+	
+	public static void disablePolygonMode() {
+ 				GL11.glPolygonMode(GL11.GL_FRONT, GL11.GL_FILL);
+				GL11.glPolygonMode(GL11.GL_BACK, GL11.GL_FILL);
+	}
+
 }

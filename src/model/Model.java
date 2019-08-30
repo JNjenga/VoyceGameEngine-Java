@@ -1,52 +1,44 @@
 package model;
 
-import org.lwjgl.opengl.*;
+import org.joml.*;
 
-import camera.*;
-import texture.*;
+import render.*;
 import utility.*;
 
 @SuppressWarnings("unused")
-public class Model {
+public class Model extends Drawable{
 
-	int VBO;
-	VAO vao;
-	String shaderName;
-	String textureName;
+	private Matrix4f m_mat;
 	
-	public Model(String shaderName,String textureName,float vertices[],int indices[],float textureCoordinates[]) {
-		this.shaderName = shaderName;
-		this.textureName = textureName;
- 		vao = new VAO(vertices,indices,textureCoordinates);
-	}
+	public Model(String shaderName,String textureName,float vertices[],int indices[],float textureCoordinates[],boolean polygonMode) {
+  		setShaderName(shaderName);
+		setTextureName(textureName);
+		setPolygonMode(polygonMode);
+		
+		setVao( new VAO(vertices,indices,textureCoordinates));
+		m_mat = new Matrix4f();
+		
+ 	}
 	
 	
-	public void draw(boolean polygonMode,ThirdPersonCamera camera) {
-		
-		ResourceManager.getInstance().getTexture(textureName).enable();
-		ResourceManager.getInstance().getShader(shaderName).enableShader();
-		ResourceManager.getInstance().getShader(shaderName).updateViewMatrix(camera.getViewMatrix(),camera.projection);
- 		vao.enableVao();
-		vao.draw();
-		vao.disableVao();
-		
-		ResourceManager.getInstance().getShader(shaderName).disableShader();
-		ResourceManager.getInstance().getTexture(textureName).disable();
-		
+ 
+	
+	@Override
+	protected void onRender() {
+ 		
 	}
 
-	public void draw(boolean polygonMode) {
+	
+
+
+	@Override
+	protected void updateUniforms() {
 		
-		ResourceManager.getInstance().getTexture(textureName).enable();
-		ResourceManager.getInstance().getShader(shaderName).enableShader();
-		
-		vao.enableVao();
-		vao.draw();
-		vao.disableVao();
-		
-		ResourceManager.getInstance().getShader(shaderName).disableShader();
-		ResourceManager.getInstance().getTexture(textureName).disable();
+		//m_mat.rotate(0.02f, 0, 0, 1);
+		//ResourceManager.getInstance().getShader(shaderName).setUnifrom("m_mat", m_mat);
 		
 	}
+	
+	
 
 }

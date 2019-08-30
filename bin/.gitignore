@@ -1,6 +1,11 @@
-/nuklear/
-/base/
-/testunits/
 /chasis/
+/events/
+/model/
+/nuklear/
+/render/
 /res/
-/camera/
+/shader/
+/testunits/
+/texture/
+/utility/
+/window/

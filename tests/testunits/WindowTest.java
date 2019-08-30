@@ -1,17 +1,13 @@
 package testunits;
 
-import org.lwjgl.glfw.*;
-
 import chasis.*;
 import model.*;
-import window.*;
 
 public class WindowTest implements Game{
 	Model model ;
 	@Override
 	public void onStart() {
-		
- 
+	 
 	}
 
 	@Override

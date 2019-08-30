@@ -14,7 +14,7 @@ public class Window {
 	public static long window;
 	
 	//Size specifire of the window
-	private int WIDTH,HEIGHT;
+	private  static int WIDTH,HEIGHT;
 	
  
 	//Tile of the window
@@ -87,8 +87,7 @@ public class Window {
 	public void updateWindow() {
 		
 		GLFW.glfwSwapBuffers(window);
-		GLFW.glfwPollEvents();
-		
+ 		
 		if(GLFW.glfwWindowShouldClose(window)) {
 			running = false;
 			
@@ -109,7 +108,19 @@ public class Window {
 		this.running = running;
 	}
 
-	public long getWindow() {
+	public static long getWindowHandle() {
  		return window;
+	}
+	
+	public static int getHEIGHT() {
+		return HEIGHT;
+	}
+	
+	public static int getWIDTH() {
+		return WIDTH;
+	}
+	
+	public String getTITLE() {
+		return TITLE;
 	}
 }

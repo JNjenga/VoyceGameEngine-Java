@@ -23,7 +23,7 @@ public class TheTriangle implements Game{
 			    0,1,2,
 			    2,3,0
 			};
-  		model = new Model("triangle","batman.jpg",vertices,indices,texCoords);
+  		model = new Model("triangle","batman.jpg",vertices,indices,texCoords,false);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class TheTriangle implements Game{
 	@Override
 	public void render() {
  		
-		model.draw(false);
+		model.render( );
  	}
 
 	@Override
@@ -41,6 +41,10 @@ public class TheTriangle implements Game{
  		
 	}
 
+
+	public static void main(String[] args) {
+		new Engine("test", 1080, 720, new TheTriangle()).start();;
+	}
 	 
 	
 }

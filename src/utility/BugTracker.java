@@ -12,7 +12,11 @@ public class BugTracker {
 	}
 	
 	public static void MEMORYUSAGE() {
-		BugTracker.LOG("DEBUG", " Used memory ::"+ Long.toString((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000)+ "Mb" );
+		BugTracker.LOG("DEBUG", " Used memory ::"+ GETMEMEMORYUSAGE()+ "Mb" );
 
 	}
+	
+	public static long GETMEMEMORYUSAGE() {
+		return (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1_000_000;
+ 	}
 }

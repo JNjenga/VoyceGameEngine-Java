@@ -2,7 +2,7 @@ package chasis;
 
 import org.lwjgl.glfw.*;
 
-import nuklear.*;
+import events.*;
 import render.*;
 import utility.*;
 import window.*;
@@ -17,6 +17,7 @@ public class Engine extends Renderer{
 	
 	private Timmer timmer;
 	
+	 static EventManager eventManager;
 	
  	public Engine(String title, int width,int height,Game game) {
  		this.game = game;
@@ -31,7 +32,9 @@ public class Engine extends Renderer{
 		
 		ResourceManager.getInstance().getWindow().createWindow(title,width,height);
 		
+		eventManager = new EventManager();
 		 
+
 	}
 	public void start() {
 		
@@ -43,12 +46,13 @@ public class Engine extends Renderer{
 		
 		timmer.init();
 		
+		eventManager.init();
 		
  		while(window.isRunning() && running) {
  			
- 			
  			//Update window
  			ResourceManager.getInstance().getWindow().updateWindow();
+ 			
  			
  			//Render
  			clear();
@@ -56,6 +60,9 @@ public class Engine extends Renderer{
  			
  			//Update game
  			game.onUpdate();
+ 
+ 			 eventManager.pollEvents();
+ 			eventManager.processEvents();
 		}
  		
  		terminate();
@@ -66,5 +73,10 @@ public class Engine extends Renderer{
 	public static  void terminate() {
  		GLFW.glfwSetWindowShouldClose(Window.window, true);
 	}
+	
+	public static EventManager getEventManager() {
+		return eventManager;
+	}
+	
 	 
 }
