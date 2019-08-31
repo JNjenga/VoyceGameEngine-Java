@@ -1,18 +1,25 @@
 package render;
 
+import org.joml.*;
 import org.lwjgl.opengl.*;
 
 public class Renderer {
+	static Vector4f color = new Vector4f();
 	
 	public static  void clear() {
  		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
  		GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
  		GL11.glEnable(GL11.GL_DEPTH_TEST);
-		GL11.glClearColor(0, 1, 0, 1);
+		GL11.glClearColor(color.x, color.y, color.z, color.w);
 	}
 
 	public static void clear(float r, float g, float b, float a) {
-		GL11.glClearColor(r, g, b, a);
+		color.x = r;
+		color.y = g;
+		color.z = b;
+		color.w = a;
+		
+	 
 
 	}
 

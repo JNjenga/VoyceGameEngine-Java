@@ -50,6 +50,7 @@ public class Engine extends Renderer{
  		while(window.isRunning() && running) {
   			//Update window
  			ResourceManager.getInstance().getWindow().updateWindow();
+ 			Renderer.clear();
  			
  			clear();
  			//Render

@@ -12,7 +12,7 @@ public abstract class Widget {
 	
 	private String windowName = "My window";
 	
-	private int windowOptions = NK_WINDOW_TITLE|NK_WINDOW_BORDER|NK_WINDOW_MOVABLE| NK_WINDOW_SCALABLE | NK_WINDOW_MINIMIZABLE|NK_WINDOW_CLOSABLE;
+	private int windowOptions = NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_SCALABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_TITLE  | NK_WINDOW_CLOSABLE;
 	private float width;
 	private float height;
 	
@@ -31,17 +31,21 @@ public abstract class Widget {
 	 
 	
 	protected abstract void layout(NkContext ctx);
+	
 	public  void draw(NkContext ctx) {
-		begin(ctx);
-		layout(ctx);
+		 
+		if (begin(ctx)) {
+			
+			layout(ctx);
+			updateProperties();
+		} 
 		end(ctx);
-		updateProperties();
 	}
-	protected void begin(NkContext ctx) {
-		 nk_begin(
+	protected boolean begin(NkContext ctx) {
+		 return nk_begin(
                 ctx,
                 windowName,
-                nk_rect(x, y, width, height, rect),
+                rect,
                 windowOptions
             );
 	}

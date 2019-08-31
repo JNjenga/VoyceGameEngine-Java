@@ -70,6 +70,8 @@ public class ResourceManager {
 		}
 		return textures.get(resourceName);
 	}
+	
+
 
 	 
 }
