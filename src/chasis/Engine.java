@@ -20,6 +20,7 @@ public class Engine extends Renderer{
 	 static EventManager eventManager;
 	
  	public Engine(String title, int width,int height,Game game) {
+ 		
  		this.game = game;
  		
 		window = ResourceManager.getInstance().getWindow();
@@ -39,6 +40,7 @@ public class Engine extends Renderer{
 	public void start() {
 		
 		game.onStart();
+		
 		loop();
 	}
 	
@@ -50,21 +52,22 @@ public class Engine extends Renderer{
  		while(window.isRunning() && running) {
   			//Update window
  			ResourceManager.getInstance().getWindow().updateWindow();
- 			Renderer.clear();
  			
- 			clear();
- 			//Render
-  			game.render();
+ 			Renderer.getInstance().clear();
+ 			
+  			//Render
+    		game.render();
+
  			
  			//Update game
  			game.onUpdate();
  
- 			 eventManager.pollEvents();
+ 			eventManager.pollEvents();
  			eventManager.processEvents();
 		}
  		
- 		terminate();
  		game.onClose();
+ 		terminate();
 
 	}
 	

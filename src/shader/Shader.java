@@ -48,7 +48,7 @@ public class Shader {
 		
 		GL20.glDeleteShader(vertexID);
 		GL20.glDeleteShader(fragmentID);
-		BugTracker.LOG("SUCCESS","SHADER :: Shaders loaded and compiled successfully");
+		BugTracker.LOG("SUCCESS","SHADER :: Shader loaded and compiled successfully");
 
 		return programID;
 		
@@ -61,7 +61,7 @@ public class Shader {
 			if(GL20.glGetShaderi(shader, GL20.GL_COMPILE_STATUS) == 0) {
 				JOptionPane.showMessageDialog(null, "ERROR :: SHADER_COMMPILATION :: "+type+"\n"
 						+GL20.glGetShaderInfoLog(shader,1024));
-			BugTracker.LOG("ERROR", ":: SHADER_COMPILATION :: "+type+"\n"+GL20.glGetShaderInfoLog(shader,1024));
+			BugTracker.LOG("WARNING", ":: SHADER_COMPILATION :: "+type+"\n"+GL20.glGetShaderInfoLog(shader,1024));
 				
 			}
 			
@@ -69,7 +69,7 @@ public class Shader {
 			if(GL20.glGetProgrami(shader, GL20.GL_LINK_STATUS) == 0) {
 				JOptionPane.showMessageDialog(null, "ERROR :: PROGRAM_COMMPILATION\n"
 						+GL20.glGetProgramInfoLog(shader,1024));
-			BugTracker.LOG(":: PROGRAM_COMPILATION\n", GL20.glGetProgramInfoLog(shader,1024));
+			BugTracker.LOG("ERROR :: SHADER :: PROGRAM_COMPILATION\n", GL20.glGetProgramInfoLog(shader,1024));
 				
 			}
 		}
@@ -87,7 +87,7 @@ public class Shader {
 			int uniformLocation =GL20.glGetUniformLocation(programID, name);;
 			
 			if (uniformLocation<0) {
-				BugTracker.LOG("ERROR", "The uniform '"+name+"' was not found !");
+				BugTracker.LOG("WARNING", "The uniform '"+name+"' was not found !");
 				return 0;
 			}
 			uniforms.put(name, uniformLocation);
@@ -107,15 +107,6 @@ public class Shader {
 		
 		GL20.glUniformMatrix4fv(getUniformLocation(name), false, mat.get(d));
 	}
-	Matrix4f model = new Matrix4f().translate(0, 0, -10f);
-	Matrix4f p = new Matrix4f().perspective((float)Math.toRadians(45), 1080/780, (float) 0.1f, 100);
-	public void updateViewMatrix(Matrix4f viewMatrix,Matrix4f p) {
-		 
-		model.rotate(0.04f, 1,0,0);
-		setUnifrom("m_mat", model);
-		 setUnifrom("p_mat", p);
-		 setUnifrom("v_mat",viewMatrix);
-		
- 	}
+	 
 
 }

@@ -8,8 +8,8 @@ import utility.*;
 
 public abstract class Drawable {
 	
-		protected VAO vao;
-		
+		protected Mesh vao;
+		protected Mesh [] vaos=new Mesh[0];
 		protected String shaderName;
 		protected String textureName;
 		
@@ -32,6 +32,8 @@ public abstract class Drawable {
 			
 			onRender();
 			
+			if (! (vaos.length >0)) {
+				
 			
 			if (vao.isTextured()) {
 				ResourceManager.getInstance().getTexture(textureName).enable();
@@ -57,6 +59,30 @@ public abstract class Drawable {
 			}
 			ResourceManager.getInstance().getShader(shaderName).disableShader();
  			
+			}else {
+				for (Mesh vao : vaos) {
+					 
+					 ResourceManager.getInstance().getShader(shaderName).enableShader();
+		 			updateUniforms();
+					
+					if (polygonMode) {
+						
+						Renderer.enablePolygonMode();
+
+					}
+
+					 
+					vao.enableVao();
+					vao.draw();
+					vao.disableVao();
+					
+					if (polygonMode) {
+						
+						Renderer.disablePolygonMode();
+
+					}
+				}
+			}
 		}
 
 		public boolean isPolygonMode() {
@@ -67,11 +93,11 @@ public abstract class Drawable {
 			this.polygonMode = polygonMode;
 		}
 
-		public VAO getVao() {
+		public Mesh getVao() {
 			return vao;
 		}
 
-		public void setVao(VAO vao) {
+		public void setVao(Mesh vao) {
 			this.vao = vao;
 		}
 

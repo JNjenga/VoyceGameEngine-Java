@@ -92,9 +92,7 @@ public class Window {
 			running = false;
 			
 			BugTracker.LOG("EVENT", "WINDOW :: Closing window...");
-			 
-			GLFW.glfwTerminate();
-			
+	 
 		}
 		
 		

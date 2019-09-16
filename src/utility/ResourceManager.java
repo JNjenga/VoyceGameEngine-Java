@@ -65,7 +65,7 @@ public class ResourceManager {
 	}
 	public Texture getTexture(String resourceName) {
 		if (textures.get(resourceName) == null) {
-			textures.put(resourceName,new Texture(texturePath+resourceName));
+			//textures.put(resourceName,new Texture(texturePath+resourceName));
 			
 		}
 		return textures.get(resourceName);

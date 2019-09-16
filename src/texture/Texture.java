@@ -27,6 +27,8 @@ import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import org.lwjgl.system.MemoryStack;
 
+import utility.*;
+
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_CLAMP_TO_BORDER;
 import static org.lwjgl.stb.STBImage.*;
@@ -51,7 +53,7 @@ public class Texture {
      * Height of the texture.
      */
     private int height;
-
+    private static int count = 0;
     /** Creates a texture. */
     public Texture() {
         id = glGenTextures();
@@ -59,14 +61,16 @@ public class Texture {
     
     public Texture(String path) {
         id = glGenTextures();
+        count++;
         loadTexture(path);
+        System.out.println(id);
     }
 
     /**
      * Binds the texture.
      */
     public void enable() {
-        glBindTexture(GL_TEXTURE_2D, id);
+         glBindTexture(GL_TEXTURE_2D, id);
     }
 
     
@@ -205,6 +209,7 @@ public class Texture {
              stbi_set_flip_vertically_on_load(true);
             image = stbi_load(Texture.class.getResource(path).toString().split(":")[1], w, h, comp, 4);
             if (image == null) {
+            	BugTracker.LOG("ERROR", "Failed to load texture '"+path+"'");
                 throw new RuntimeException("Failed to load a texture file!"
                                            + System.lineSeparator() + stbi_failure_reason());
             }
@@ -216,5 +221,9 @@ public class Texture {
 
         return createTexture(width, height, image);
     }
+    
+    public int getId() {
+		return id;
+	}
 
 }

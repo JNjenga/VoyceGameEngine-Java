@@ -69,7 +69,7 @@ public class NuklearManager {
     private int frag_shdr;
     private int uniform_tex;
     private int uniform_proj;
-    
+
     private NkBuffer          cmds         = NkBuffer.create();
     private NkDrawNullTexture null_texture = NkDrawNullTexture.create();
 
