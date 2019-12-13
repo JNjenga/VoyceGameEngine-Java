@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- 
+
+      init - Make directories
+      clean - clean directories
+      compile-debug - Compile everything {debugmode} 
+      compile - Compile everything
+      jar-lib - package to jar file
+
+ -->
+<project name="VoyceEngine" basedir="." default="jar">
+      
+      <property name="version"            value="1_0_alpha"/>
+      <property name="spec.version"       value="1.0"/>
+      <property name="user.name"          value="Voyce Studio"/>
+      <property name="source.dir"         value="src"/>
+      <property name="lib.dir"            value="dependancies"/>
+      <property name="class.dir"          value="bin"/>
+      <property name="jar.dir"            value="dist"/>
+      <property name="jar.file"           value="${jar.dir}/${ant.project.name}.jar"/>
+
+      <!-- <property name="Sandbox.location"   value="../VoyceSandbox"/> -->
+      <property environment="env"/>
+      <property name="debuglevel" value="source,lines,vars"/>
+      <property name="target" value="13"/>
+      <property name="source" value="13"/>
+
+
+      <property name="debug" value="true"/>
+
+      <path id="dependancies.path" >
+            <fileset dir="${lib.dir}">
+                  <include name="*/*.jar" />
+                  <exclude name="*/*-*-natives-*.jar" />
+            </fileset>
+      </path>
+
+      <path id="dependancies.linux.path" >
+            <fileset dir="${lib.dir}">
+                  <include name="*/*-*-natives-linux.jar" />
+            </fileset>
+      </path>
+      
+      <path id="dependancies.windows.path" >
+            <fileset dir="${lib.dir}">
+                  <include name="*/*-*-natives-windows.jar" />
+            </fileset>
+      </path>
+
+      <target name="clean">
+            <delete dir="${class.dir}"/>
+      </target >
+
+      <target name="init">
+            <mkdir dir="bin"/>
+
+            <!-- Copy all non-source-code dirs to bin -->
+            <copy includeemptydirs="false" todir="bin">
+                  <fileset dir="${source.dir}">
+                        <exclude name="**/*.launch" />
+                        <exclude name="**/*.java" />
+                  </fileset> 
+             </copy>
+      </target>
+      
+      <!-- Compile debug mode : Output -> *.class files  -->
+      <target name="compile-debug">
+            <javac debug="true" destdir="${class.dir}" includeantruntime="false" /> 
+            <src path="${source.dir}"/>
+            <classpath refid="dependancies.path"/>
+            
+            <!-- Natives : Platform dependant  -->
+            <classpath refid="dependancies.path"/>
+      </target>
+
+      </target name="jar-lib" depends="compile" >
+
+            <mkdir dir="${jar.dir}" />
+            <mkdir dir="${class.dir}/${lib.dir}" />
+            <copy todir="${class.dir}/${lib.dir}" flatten="true">
+                  <path refid="libraries.path"/>
+            </copy>
+
+            <jar destfile="${jar.file}" basedir="${class.dir}">
+                  <manifest >
+                        <attribute name="Built-By" value="${user.name}"/>
+                        <section name="common">
+                              <attribute name="Specification-Title" value="Voyce Engine"/>
+                              <attribute name="Specification-Version" value="${version}"/>
+                              <attribute name="Specification-Vendor" value="Voyce Studio"/>
+                              <attribute name="Implementation-Title" value="common"/>
+                              <attribute name="Implementation-Version" value="${version} ${TODAY}"/>
+                              <attribute name="Implementation-Vendor" value="Voyce Studio"/>
+                        </section>
+
+                  </manifest>
+            </jar>
+      <target>
+      
+      </target name="jar-test" depends="compile-test" >
+
+      <target>
+
+</project>
